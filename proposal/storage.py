@@ -4,7 +4,10 @@ class Storage(object):
 		self.storage_obj = storage_obj
 
 	def _constructKey(self, *args):
-		return ":".join(args)
+		key =  "-".join(args)
+		key = key.replace("/", "-")
+
+		return key
 
 	def store(self, resource_location, *args):
 		"""
