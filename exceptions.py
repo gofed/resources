@@ -14,6 +14,9 @@ class ResourcesBadCommit(ResourcesGenericException):
 class ResourcesNoSpace(ResourcesGenericException):
 	pass
 
+class ResourceNotFoundError(ResourcesGenericException):
+	pass
+
 if __name__ == '__main__':
 	sys.exit(1)
 

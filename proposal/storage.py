@@ -1,7 +1,10 @@
-class Storage(Object):
+class Storage(object):
 
 	def __init__(self, storage_obj = None):
 		self.storage_obj = storage_obj
+
+	def _constructKey(self, *args):
+		return ":".join(args)
 
 	def store(self, resource_location, *args):
 		"""
@@ -15,3 +18,4 @@ class Storage(Object):
 		returns:	resource_location (str)
 		"""
 		raise NotImplementedError()
+
