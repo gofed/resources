@@ -1,7 +1,6 @@
 from storage import Storage
 from shutil import copyfile
 from os.path import exists
-from ..exceptions import ResourceNotFoundError
 
 class DirectoryStorage(Storage):
 
@@ -39,7 +38,7 @@ class DirectoryStorage(Storage):
 		resource_dest = "%s/%s" % (self.work_dir, resource_id)
 		# does the resource exists?
 		if not exists(resource_dest):
-			raise ResourceNotFoundError("Resource %s does not exist, work_dir: %s" % (resource_id, self.work_dir))
+			raise KeyError("Resource %s does not exist, work_dir: %s" % (resource_id, self.work_dir))
 		# returns location of a file in a storage (read only)
 		return resource_dest
 

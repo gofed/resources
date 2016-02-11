@@ -17,6 +17,22 @@ class ResourcesNoSpace(ResourcesGenericException):
 class ResourceNotFoundError(ResourcesGenericException):
 	pass
 
+class ResourceInvalidStorageError(ResourcesGenericException):
+	pass
+
+class ResourceInvalidRetrieverError(ResourcesGenericException):
+	pass
+
+class ResourceUnableToRetrieveError(ResourcesGenericException):
+	pass
+
+class ResourceUnableToStoreError(ResourcesGenericException):
+	pass
+
+class ResourceInvalidResourceError(ResourcesGenericException):
+	pass
+
+
 if __name__ == '__main__':
 	sys.exit(1)
 

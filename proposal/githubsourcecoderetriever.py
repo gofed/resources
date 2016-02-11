@@ -1,6 +1,7 @@
 from retriever import Retriever
 import urllib2
 import tempfile
+from ..exceptions import ResourceInvalidResourceError
 
 class GithubSourceCodeRetriever(Retriever):
 
@@ -21,10 +22,25 @@ class GithubSourceCodeRetriever(Retriever):
 
 		# TODO(jchaloup): catch exceptions: urllib2.URLError, urllib2.HTTPError
 		#	raise ResourceNotRetrieved instead?
-		response = urllib2.urlopen(tarball_url)
-		with tempfile.NamedTemporaryFile(delete=False) as f:
-			f.write(response.read())
-			f.flush()
+		try:
+			response = urllib2.urlopen(tarball_url)
+		except urllib2.URLError as err:
+			# can a user do something about it?
+			msg = "Unable to retrieve resource, url = %s, err = " % (tarball_url, err)
+			raise urllib2.URLError(msg)
+		except urllib2.HTTPError as err:
+			# can a user do something about it?
+			msg = "Unable to retrieve resource, url = %s, err = " % (tarball_url, err)
+			raise urllib2.HTTPError(msg)
+
+		try:
+			with tempfile.NamedTemporaryFile(delete=False) as f:
+				f.write(response.read())
+				f.flush()
+		except IOError as e:
+			# can a user do something about it?
+			msg = "Unable to store retrieved resource, err = " % (err)
+			raise ResourceUnableToRetrieveError(msg)
 
 		return f.name
 
