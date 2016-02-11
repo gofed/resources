@@ -1,6 +1,6 @@
-from resources.proposal.storagebuilder import StorageBuilder
-from resources.proposal.githubsourcecodeprovider import GithubSourceCodeProvider
-from resources.proposal.githubsourcecoderetriever import GithubSourceCodeRetriever
+from storagebuilder import StorageBuilder
+from githubsourcecodeprovider import GithubSourceCodeProvider
+from githubsourcecoderetriever import GithubSourceCodeRetriever
 
 class ProviderBuilder(object):
 
