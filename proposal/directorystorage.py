@@ -21,7 +21,11 @@ class DirectoryStorage(Storage):
 		"""
 		resource_dest = "%s/%s" % (self.work_dir, resource_id)
 		# if file exists, rewrite the file
+		print resource_location
+		print resource_dest
+		# TODO(jchaloup): resource_location must be a file, if not raise IOError with additional info. Or ResourceInvalidResourceError?
 		copyfile(resource_location, resource_dest)
+
 		# TODO(jchaloup): set the file read only
 		# TODO(jchaloup): rather throw ResourceStoreError than IOError
 

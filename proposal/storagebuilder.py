@@ -6,7 +6,7 @@ from githubsourcecodestorage import GithubSourceCodeStorage
 from rpmstorage import RpmStorage
 from kojibuildstorage import KojiBuildStorage
 from githubrepositorystorage import GithubRepositoryStorage
-from userdirectory import UserDirectoryStorage
+from userdirectorystorage import UserDirectoryStorage
 
 class StorageBuilder(object):
 
