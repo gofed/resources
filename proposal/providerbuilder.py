@@ -11,6 +11,7 @@ class ProviderBuilder(object):
 		# TODO(jchaloup) set storage working directory from configuration
 		storage = StorageBuilder().buildGithubSourceCodeStorage("/var/lib/gofed/storage")
 		retriever = GithubSourceCodeRetriever()
-		provider = GithubSourceCodeProvider(storage, retriever)
+		# TODO(jchaloup) set storage working directory from configuration
+		provider = GithubSourceCodeProvider(storage, retriever, "/var/lib/gofed/resource_provider")
 		return provider
 
