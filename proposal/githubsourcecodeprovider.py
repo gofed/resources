@@ -41,7 +41,7 @@ class GithubSourceCodeProvider(Provider):
 
 	def provide(self, repository_url, commit):
 		"""For a given pair (repository_url, commit) provide corresponding resource.
-		Source codes can be retrieved from upstram repository, local repository
+		Source codes can be retrieved from upstream repository, local repository
 		or from a storage (if available)
 
 		:param repository_url:	github repository, e.g. github.com/coreos/etcd
@@ -62,6 +62,6 @@ class GithubSourceCodeProvider(Provider):
 		resource_location = self._retriever.retrieve(repository_url, commit)
 		# rename the resource location
 		resource_dest = "%s/%s" % (self.working_directory, self.generateUniqueName())
-		# TODO(jchaloup): catch exception and throw one with more information?i
+		# TODO(jchaloup): catch exception and throw one with more information?
 		move(resource_location, resource_dest)
 		return resource_dest
