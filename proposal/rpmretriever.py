@@ -1,5 +1,4 @@
 from retriever import Retriever
-from ..exceptions import ResourceInvalidResourceError
 
 class RpmRetriever(Retriever):
 
@@ -21,7 +20,7 @@ class RpmRetriever(Retriever):
 		# get n,v,r from build
 		parts = build.split("-")
 		if len(parts) < 3:
-			raise ResourceInvalidResourceError("invalid build nvr: %s" % build)
+			raise ValueError("Invalid build nvr: %s" % build)
 
 		release = parts[-1]
 		version = parts[-2]
@@ -30,7 +29,7 @@ class RpmRetriever(Retriever):
 		# get architecture
 		parts = rpm.split(".")
 		if len(parts) < 3:
-			raise ResourceInvalidResourceError("invalid rpm nvr.arch.(s)rpm: %s" % rpm)
+			raise ValueError("Invalid rpm nvr.arch.(s)rpm: %s" % rpm)
 
 		arch = parts[-2]
 

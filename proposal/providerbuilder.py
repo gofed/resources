@@ -1,7 +1,8 @@
 from storagebuilder import StorageBuilder
 from githubsourcecodeprovider import GithubSourceCodeProvider
 from githubsourcecoderetriever import GithubSourceCodeRetriever
-
+from rpmretriever import RpmRetriever
+from rpmprovider import RpmProvider
 
 class ProviderBuilder(object):
 
