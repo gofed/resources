@@ -14,11 +14,11 @@ class Retriever(object):
 			response = urllib2.urlopen(resource_url)
 		except urllib2.URLError as err:
 			# can a user do something about it?
-			msg = "Unable to retrieve resource, url = %s, err = " % (resource_url, err)
+			msg = "Unable to retrieve resource, url = %s, err = %s" % (resource_url, err)
 			raise urllib2.URLError(msg)
 		except urllib2.HTTPError as err:
 			# can a user do something about it?
-			msg = "Unable to retrieve resource, url = %s, err = " % (resource_url, err)
+			msg = "Unable to retrieve resource, url = %s, err = %s" % (resource_url, err)
 			raise urllib2.HTTPError(msg)
 
 		try:
