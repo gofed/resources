@@ -2,6 +2,9 @@ from storage import Storage
 
 class KojiBuildStorage(Storage):
 
+	def _constructKey(self, *args):
+		return Storage._constructKey(self, self.__class__.__name__.lower(), *args)
+
 	def store(self, build_location, product, distribution, build):
 		"""
 		param:	build_location	tarball containing build's (s)rpms

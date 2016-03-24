@@ -2,8 +2,8 @@ from storage import Storage
 
 class GithubRepositoryStorage(Storage):
 
-	def _constructKey(self, username, project):
-		return Storage._constructKey(self, "github-repository", username, project)
+	def _constructKey(self, *args):
+		return Storage._constructKey(self, self.__class__.__name__.lower(), *args)
 
 	def store(self, repository_location, username, project):
 		"""
