@@ -7,6 +7,13 @@ class Provider(object):
 		self._retriever = retriever
 		self.working_directory = working_directory
 
+		# TODO(jchaloup): read this from config file
+		# store retrieved resources
+		self.store = False
+
+	def storeResource(self):
+		return self.store
+
 	def provide(self, *args, **kwargs):
 		raise NotImplementedError()
 

@@ -2,6 +2,9 @@ from storage import Storage
 
 class GithubRepositoryStorage(Storage):
 
+	def _constructKey(self, username, project):
+		return Storage._constructKey(self, "github-repository", username, project)
+
 	def store(self, repository_location, username, project):
 		"""
 		param:	repository_location	file (e.g. tarball) containing the repository

@@ -44,4 +44,8 @@ class GithubRepositoryProvider(Provider):
 		resource_dest = "%s/%s" % (self.working_directory, self.generateUniqueName())
 		# TODO(jchaloup): catch exception and throw one with more information?
 		move(resource_location, resource_dest)
+
+		if self.storeResource():
+			self._storage.store(resource_dest, username, project)
+
 		return resource_dest
