@@ -23,7 +23,6 @@ class GithubRepositoryRetriever(Retriever):
 			clone_dir = tempfile.mkdtemp()
 
 			Repo.clone_from(clone_url, clone_dir)
-			print clone_dir
 
 			# create temp file for tarball 
 			with tempfile.NamedTemporaryFile(delete=False) as f:
