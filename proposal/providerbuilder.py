@@ -3,8 +3,8 @@ from githubsourcecodeprovider import GithubSourceCodeProvider
 from githubsourcecoderetriever import GithubSourceCodeRetriever
 from rpmretriever import RpmRetriever
 from rpmprovider import RpmProvider
-from githubrepositoryprovider import GithubRepositoryProvider
-from githubrepositoryretriever import GithubRepositoryRetriever
+from gitrepositoryprovider import GitRepositoryProvider
+from gitrepositoryretriever import GitRepositoryRetriever
 
 class ProviderBuilder(object):
 
@@ -27,11 +27,11 @@ class ProviderBuilder(object):
 		provider = RpmProvider(storage, retriever, "/var/lib/gofed/resource_provider")
 		return provider
 
-	def buildGithubRepositoryProvider(self):
+	def buildGitRepositoryProvider(self):
 		# TODO(jchaloup) set storage working directory from configuration
-		storage = StorageBuilder().buildGithubRepositoryStorage("/var/lib/gofed/storage")
-		retriever = GithubRepositoryRetriever()
+		storage = StorageBuilder().buildGitRepositoryStorage("/var/lib/gofed/storage")
+		retriever = GitRepositoryRetriever()
 		# TODO(jchaloup) set storage working directory from configuration
-		provider = GithubRepositoryProvider(storage, retriever, "/var/lib/gofed/resource_provider")
+		provider = GitRepositoryProvider(storage, retriever, "/var/lib/gofed/resource_provider")
 		return provider
 

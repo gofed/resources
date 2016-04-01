@@ -5,21 +5,26 @@ import tarfile
 import os
 import shutil
 
-class GithubRepositoryRetriever(Retriever):
+class GitRepositoryRetriever(Retriever):
 
-	def retrieve(self, username, project, protocol = "https"):
-		"""Retrieve repository from github.com
+	def retrieve(self, repository, protocol = "https"):
+		"""Retrieve repository from github.com or bitbucket.org
 		The method returns path of retrieved repository.
 		Caller is responsible for deleting the path.
-		:param username: github username
+		:param username: git username
 		:type  username: str
-		:param project: github project
+		:param project: git project
 		:type  project: str
 		:param protocol: protocol based on which a repository get retrieved, e.g. https, git
 		:type  protocol: str
 		"""
 		if protocol == "https":
-			clone_url = "https://github.com/%s/%s" % (username, project)
+			provider = repository["provider"]
+			if provider == "github":
+				clone_url = "https://github.com/%s/%s" % (repository["username"], repository["project"])
+			else:
+				raise ValueError("Provider '%s' not recognized" % provider)
+
 			clone_dir = tempfile.mkdtemp()
 
 			Repo.clone_from(clone_url, clone_dir)
