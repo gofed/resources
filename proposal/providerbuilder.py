@@ -1,10 +1,10 @@
-from storagebuilder import StorageBuilder
-from githubsourcecodeprovider import GithubSourceCodeProvider
-from githubsourcecoderetriever import GithubSourceCodeRetriever
-from rpmretriever import RpmRetriever
-from rpmprovider import RpmProvider
-from gitrepositoryprovider import GitRepositoryProvider
-from gitrepositoryretriever import GitRepositoryRetriever
+from .storagebuilder import StorageBuilder
+from .retrieverbuilder import RetrieverBuilder
+
+from .githubsourcecodeprovider import GithubSourceCodeProvider
+from .rpmprovider import RpmProvider
+from .gitrepositoryprovider import GitRepositoryProvider
+from .mercurialrepositoryprovider import MercurialRepositoryProvider
 
 class ProviderBuilder(object):
 
@@ -14,7 +14,7 @@ class ProviderBuilder(object):
 	def buildGithubSourceCodeProvider(self):
 		# TODO(jchaloup) set storage working directory from configuration
 		storage = StorageBuilder().buildGithubSourceCodeStorage("/var/lib/gofed/storage")
-		retriever = GithubSourceCodeRetriever()
+		retriever = RetrieverBuilder().buildGithubSourceCodeRetriever()
 		# TODO(jchaloup) set storage working directory from configuration
 		provider = GithubSourceCodeProvider(storage, retriever, "/var/lib/gofed/resource_provider")
 		return provider
@@ -22,7 +22,7 @@ class ProviderBuilder(object):
 	def buildRpmProvider(self):
 		# TODO(jchaloup) set storage working directory from configuration
 		storage = StorageBuilder().buildRpmStorage("/var/lib/gofed/storage")
-		retriever = RpmRetriever()
+		retriever = RetrieverBuilder().buildRpmRetriever()
 		# TODO(jchaloup) set storage working directory from configuration
 		provider = RpmProvider(storage, retriever, "/var/lib/gofed/resource_provider")
 		return provider
@@ -30,8 +30,16 @@ class ProviderBuilder(object):
 	def buildGitRepositoryProvider(self):
 		# TODO(jchaloup) set storage working directory from configuration
 		storage = StorageBuilder().buildGitRepositoryStorage("/var/lib/gofed/storage")
-		retriever = GitRepositoryRetriever()
+		retriever = RetrieverBuilder().buildGitRepositoryRetriever()
 		# TODO(jchaloup) set storage working directory from configuration
 		provider = GitRepositoryProvider(storage, retriever, "/var/lib/gofed/resource_provider")
+		return provider
+
+	def buildMercurialRepositoryProvider(self):
+		# TODO(jchaloup) set storage working directory from configuration
+		storage = StorageBuilder().buildMercurialRepositoryStorage("/var/lib/gofed/storage")
+		retriever = RetrieverBuilder().buildMercurialRepositoryRetriever()
+		# TODO(jchaloup) set storage working directory from configuration
+		provider = MercurialRepositoryProvider(storage, retriever, "/var/lib/gofed/resource_provider")
 		return provider
 
