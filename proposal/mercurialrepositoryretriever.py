@@ -1,7 +1,8 @@
-from retriever import Retriever
-from git import Repo
+from .repositoryretriever import RepositoryRetriever
+import hglib
+from hglib.util import b
 
-class GitRepositoryRetriever(Retriever):
+class MercurialRepositoryRetriever(RepositoryRetriever):
 
 	def _cloneRepository(self, clone_url, clone_dir):
 		"""Clone repository
@@ -11,7 +12,7 @@ class GitRepositoryRetriever(Retriever):
 		:param clone_dir: directory to clone repository to
 		:type  clone_dir: string
 		"""
-		Repo.clone_from(clone_url, clone_dir)
+		hglib.clone(b(clone_url), b(clone_dir))
 
 	def _constructCloneURL(self, repository, protocol):
 		"""Construct clone url for given repository
@@ -22,11 +23,11 @@ class GitRepositoryRetriever(Retriever):
 		:type  protocol: string
 		"""
 		provider = repository["provider"]
-		if provider not in ["github"]:
+		if provider not in ["bitbucket"]:
 			raise ValueError("Provider '%s' not supported" % provider)
 
 		if protocol == "https":
-			return "https://github.com/%s/%s" % (repository["username"], repository["project"])
+			return "https://bitbucket.org/%s/%s" % (repository["username"], repository["project"])
 		else:
 			raise ValueError("Protocol '%s' not supported" % provider)
 
