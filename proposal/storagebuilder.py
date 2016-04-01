@@ -6,6 +6,7 @@ from githubsourcecodestorage import GithubSourceCodeStorage
 from rpmstorage import RpmStorage
 from kojibuildstorage import KojiBuildStorage
 from gitrepositorystorage import GitRepositoryStorage
+from mercurialrepositorystorage import MercurialRepositoryStorage
 from userdirectorystorage import UserDirectoryStorage
 
 class StorageBuilder(object):
@@ -40,6 +41,12 @@ class StorageBuilder(object):
 		obj = DirectoryStorage(work_dir)
 		obj = TarballStorage(obj)
 		obj = GitRepositoryStorage(obj)
+		return obj
+
+	def buildMercurialRepositoryStorage(self, work_dir):
+		obj = DirectoryStorage(work_dir)
+		obj = TarballStorage(obj)
+		obj = MercurialRepositoryStorage(obj)
 		return obj
 
 	def buildUserDirectoryStorage(self, work_dir):
