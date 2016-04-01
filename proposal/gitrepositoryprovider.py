@@ -1,9 +1,10 @@
-from provider import Provider
-from gitrepositorystorage import GitRepositoryStorage
-from gitrepositoryretriever import GitRepositoryRetriever
+from .repositoryprovider import RepositoryProvider
+from .gitrepositorystorage import GitRepositoryStorage
+from .gitrepositoryretriever import GitRepositoryRetriever
 from shutil import move
+from ..exceptions import ResourceInvalidStorageError, ResourceInvalidRetrieverError
 
-class GitRepositoryProvider(Provider):
+class GitRepositoryProvider(RepositoryProvider):
 
 	def __init__(self, storage, retriever, working_directory):
 		"""
@@ -11,6 +12,8 @@ class GitRepositoryProvider(Provider):
 		:type  storage: GithubRepositoryStorage
 		:param retriever: github repository retriever
 		:type  retriever: GithubRepositoryRetriever
+		:param working_directory: working directory for provider
+		:type  working_directory: string
 		"""
 		if storage != None and not isinstance(storage, GitRepositoryStorage):
 			raise ResourceInvalidStorageError("GitRepositoryProvider accepts GitRepositoryStorage only")
@@ -18,34 +21,5 @@ class GitRepositoryProvider(Provider):
 		if not isinstance(retriever, GitRepositoryRetriever):
 			raise ResourceInvalidRetrieverError("GitRepositoryProvider accepts GitRepositoryRetriever only")
 
-		Provider.__init__(self, storage, retriever, working_directory)
+		RepositoryProvider.__init__(self, storage, retriever, working_directory)
 
-	def provide(self, repository):
-		"""For a given tuple (username, project) provide corresponding resource.
-		Source codes can be retrieved from distribution builder
-		or from a storage (if available)
-
-		:param username: github username
-		:type  username: str
-		:param project: github project
-		:type  project: str
-		"""
-
-		# check the storage
-		if self._storage != None:
-			try: 
-				return self._storage.retrieve(repository)
-			except KeyError:
-				pass
-
-		# check distribution builder
-		resource_location = self._retriever.retrieve(repository)
-		# rename the resource location
-		resource_dest = "%s/%s" % (self.working_directory, self.generateUniqueName())
-		# TODO(jchaloup): catch exception and throw one with more information?
-		move(resource_location, resource_dest)
-
-		if self.storeResource():
-			self._storage.store(resource_dest, repository)
-
-		return resource_dest

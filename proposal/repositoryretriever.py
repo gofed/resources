@@ -35,7 +35,7 @@ class RepositoryRetriever(Retriever):
 		:param protocol: protocol based on which a repository get retrieved, e.g. https, git
 		:type  protocol: str
 		"""
-		clone_url = self._constructCloneURL(repository)
+		clone_url = self._constructCloneURL(repository, protocol)
 		clone_dir = tempfile.mkdtemp()
 		self._cloneRepository(clone_url, clone_dir)
 

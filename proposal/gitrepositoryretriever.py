@@ -1,7 +1,7 @@
-from retriever import Retriever
+from .repositoryretriever import RepositoryRetriever
 from git import Repo
 
-class GitRepositoryRetriever(Retriever):
+class GitRepositoryRetriever(RepositoryRetriever):
 
 	def _cloneRepository(self, clone_url, clone_dir):
 		"""Clone repository

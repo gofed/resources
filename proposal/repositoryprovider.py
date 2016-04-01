@@ -1,7 +1,8 @@
-from provider import Provider
-from repositorystorage import RepositoryStorage
-from repositoryretriever import RepositoryRetriever
+from .provider import Provider
+from .repositorystorage import RepositoryStorage
+from .repositoryretriever import RepositoryRetriever
 from shutil import move
+from ..exceptions import ResourceInvalidStorageError, ResourceInvalidRetrieverError
 
 class RepositoryProvider(Provider):
 
@@ -11,6 +12,8 @@ class RepositoryProvider(Provider):
 		:type  storage: RepositoryStorage
 		:param retriever: repository retriever
 		:type  retriever: RepositoryRetriever
+		:param working_directory: working directory for provider
+		:type  working_directory: string
 		"""
 		if storage != None and not isinstance(storage, RepositoryStorage):
 			raise ResourceInvalidStorageError("RepositoryProvider accepts RepositoryStorage only")
