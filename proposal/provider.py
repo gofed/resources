@@ -9,7 +9,7 @@ class Provider(object):
 
 		# TODO(jchaloup): read this from config file
 		# store retrieved resources
-		self.store = True
+		self.store = False
 
 	def storeResource(self):
 		return self.store
