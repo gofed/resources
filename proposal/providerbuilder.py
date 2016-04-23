@@ -11,6 +11,15 @@ class ProviderBuilder(object):
 	def __init__(self):
 		pass
 
+	def buildSourceCodeProvider(self, repository):
+		if repository["provider"] == "github":
+			return self.buildGithubSourceCodeProvider()
+
+		raise KeyError("Provider '%s' not supported" % repository["provider"])
+
+		if repository["provider"] == "bitbucket":
+			return None
+
 	def buildGithubSourceCodeProvider(self):
 		# TODO(jchaloup) set storage working directory from configuration
 		storage = StorageBuilder().buildGithubSourceCodeStorage("/var/lib/gofed/storage")

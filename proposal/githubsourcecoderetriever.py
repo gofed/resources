@@ -1,8 +1,9 @@
 from retriever import Retriever
+from gofed_lib.urlbuilder.builder import UrlBuilder
 
 class GithubSourceCodeRetriever(Retriever):
 
-	def retrieve(self, repository_url, commit):
+	def retrieve(self, repository, commit):
 		"""Retrieve source codes tarball from github repository.
 		The method returns path of retrieved tarball.
 		Caller is responsible for deleting the path.
@@ -15,6 +16,7 @@ class GithubSourceCodeRetriever(Retriever):
 
 		# construct the download url
 		# https://REPOSITORY_URL/archive/COMMIT/name.tar.gz
+		repository_url = UrlBuilder().buildGithubProvider(repository)
 		tarball_url = "https://%s/archive/%s/name.tar.gz" % (repository_url, commit)
 
 		return self._retrieveResource(tarball_url)
