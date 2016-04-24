@@ -6,6 +6,9 @@ class FakeProviderBuilder(object):
 	def __init__(self):
 		pass
 
+	def buildSourceCodeProvider(self, provider):
+		return self
+
 	def buildGithubSourceCodeProvider(self):
 		return self
 
