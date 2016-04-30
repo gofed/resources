@@ -1,4 +1,5 @@
 import uuid
+from resources.config.config import ResourcesConfig
 
 class Provider(object):
 
@@ -7,9 +8,8 @@ class Provider(object):
 		self._retriever = retriever
 		self.working_directory = working_directory
 
-		# TODO(jchaloup): read this from config file
 		# store retrieved resources
-		self.store = True
+		self.store = ResourcesConfig().cacheResources()
 
 	def storeResource(self):
 		return self.store

@@ -15,3 +15,5 @@ class ResourcesConfig(Config):
 	def providerDirectory(self):
 		return self._config.get("resources", "provider_dir")
 
+	def cacheResources(self):
+		return self._config.get("resources", "cache_resources") == "true"
