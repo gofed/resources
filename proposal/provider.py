@@ -1,5 +1,5 @@
 import uuid
-from resources.config.config import ResourcesConfig
+from resources.proposal.config.config import ResourcesConfig
 
 class Provider(object):
 
