@@ -1,3 +1,6 @@
+import logging
+logger = logging.getLogger("github_source_code_provider")
+
 from provider import Provider
 from ..exceptions import ResourceInvalidStorageError, ResourceInvalidRetrieverError, ResourceUnableToRetrieveError
 from githubsourcecodestorage import GithubSourceCodeStorage
@@ -51,6 +54,7 @@ class GithubSourceCodeProvider(Provider):
 		"""
 		# check the storage
 		if self._storage != None:
+			logger.info("checking githubsourcecodestorage for %s:%s" % (str(repository), commit))
 			try: 
 				return self._storage.retrieve(repository, commit)
 			except KeyError:
@@ -59,9 +63,13 @@ class GithubSourceCodeProvider(Provider):
 		# TODO(jchaloup) check local repository
 		
 		# check upstream repository
+		logger.info("retriving resource %s:%s with githubsourcecoderetriever" % (str(repository), commit))
 		resource_location = self._retriever.retrieve(repository, commit)
+		logger.debug("resource %s:%s retrieved" % (str(repository), commit))
+
 		# rename the resource location
 		resource_dest = "%s/%s" % (self.working_directory, self.generateUniqueName())
 		# TODO(jchaloup): catch exception and throw one with more information?
 		move(resource_location, resource_dest)
+		logger.debug("resource %s:%s moved under working directory" % (str(repository), commit))
 		return resource_dest
