@@ -2,7 +2,7 @@ import logging
 logger = logging.getLogger("github_source_code_provider")
 
 from provider import Provider
-from ..exceptions import ResourceInvalidStorageError, ResourceInvalidRetrieverError, ResourceUnableToRetrieveError
+from .exceptions import ResourceInvalidStorageError, ResourceInvalidRetrieverError, ResourceUnableToRetrieveError
 from githubsourcecodestorage import GithubSourceCodeStorage
 from githubsourcecoderetriever import GithubSourceCodeRetriever
 from shutil import move

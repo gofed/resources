@@ -2,7 +2,7 @@ from .provider import Provider
 from .repositorystorage import RepositoryStorage
 from .repositoryretriever import RepositoryRetriever
 from shutil import move
-from ..exceptions import ResourceInvalidStorageError, ResourceInvalidRetrieverError
+from .exceptions import ResourceInvalidStorageError, ResourceInvalidRetrieverError
 
 class RepositoryProvider(Provider):
 

@@ -6,7 +6,7 @@ from .rpmprovider import RpmProvider
 from .gitrepositoryprovider import GitRepositoryProvider
 from .mercurialrepositoryprovider import MercurialRepositoryProvider
 
-from gofed_resources.proposal.config.config import ResourcesConfig
+from .config.config import ResourcesConfig
 
 class ProviderBuilder(object):
 

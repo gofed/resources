@@ -2,7 +2,7 @@ from .repositoryprovider import RepositoryProvider
 from .gitrepositorystorage import GitRepositoryStorage
 from .gitrepositoryretriever import GitRepositoryRetriever
 from shutil import move
-from ..exceptions import ResourceInvalidStorageError, ResourceInvalidRetrieverError
+from .exceptions import ResourceInvalidStorageError, ResourceInvalidRetrieverError
 
 class GitRepositoryProvider(RepositoryProvider):
 

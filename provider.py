@@ -1,35 +1,25 @@
-#!/bin/python
-
-import sys
+import uuid
+from .config.config import ResourcesConfig
 
 class Provider(object):
-	def __init__(self):
-		self._storage = None
-		self._receiver = None
-		raise NotImplementedError("Cannot instantiate abstract class")
 
-	def is_cached(self, *args, **kwargs):
-		return self._storage.is_available(*args, **kwargs)
+	def __init__(self, storage, retriever, working_directory):
+		self._storage = storage
+		self._retriever = retriever
+		self.working_directory = working_directory
 
-	def set_storage_space_limit(self, limit):
-		self._storage.set_space_limit(limit)
+		# store retrieved resources
+		self.store = ResourcesConfig().cacheResources()
 
-	def get_storage_total_space(self):
-		return self._storage.get_total_space()
-
-	def get_storage_used_space(self):
-		return self._storage.get_used_space()
-
-	def get_storage_free_space(self):
-		return self._storage.get_free_space()
+	def storeResource(self):
+		return self.store
 
 	def provide(self, *args, **kwargs):
-		if not self._storage.is_available(*args, **kwargs):
-			content = self._receiver.receive(*args, **kwargs)
-			self._storage.store(content, *args, **kwargs)
+		raise NotImplementedError()
 
-		return self._storage.retrieve(*args, **kwargs)
-
-if __name__ == '__main__':
-	sys.exit(1)
-
+	def generateUniqueName(self):
+		return "%s-%s%s" % (
+			self.__class__.__name__.lower(),
+			uuid.uuid4().hex,
+			uuid.uuid4().hex
+		)

@@ -2,7 +2,7 @@ from .repositoryprovider import RepositoryProvider
 from .mercurialrepositorystorage import MercurialRepositoryStorage
 from .mercurialrepositoryretriever import MercurialRepositoryRetriever
 from shutil import move
-from ..exceptions import ResourceInvalidStorageError, ResourceInvalidRetrieverError
+from .exceptions import ResourceInvalidStorageError, ResourceInvalidRetrieverError
 
 class MercurialRepositoryProvider(RepositoryProvider):
 

@@ -1,6 +1,6 @@
 import urllib2
 import tempfile
-from ..exceptions import ResourceUnableToRetrieveError
+from .exceptions import ResourceUnableToRetrieveError
 
 class Retriever(object):
 
