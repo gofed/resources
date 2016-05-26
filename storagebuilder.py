@@ -3,6 +3,7 @@ from filestorage import FileStorage
 from specfilestorage import SpecfileStorage
 from tarballstorage import TarballStorage
 from githubsourcecodestorage import GithubSourceCodeStorage
+from bitbucketsourcecodestorage import BitbucketSourceCodeStorage
 from rpmstorage import RpmStorage
 from kojibuildstorage import KojiBuildStorage
 from gitrepositorystorage import GitRepositoryStorage
@@ -25,6 +26,13 @@ class StorageBuilder(object):
 		obj = TarballStorage(obj)
 		obj = GithubSourceCodeStorage(obj)
 		return obj
+
+	def buildBitbucketSourceCodeStorage(self, work_dir):
+		obj = DirectoryStorage(work_dir)
+		obj = TarballStorage(obj)
+		obj = BitbucketSourceCodeStorage(obj)
+		return obj
+
 
 	def buildRpmStorage(self, work_dir):
 		obj = DirectoryStorage(work_dir)
