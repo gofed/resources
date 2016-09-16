@@ -1,6 +1,6 @@
-from provider import Provider
-from rpmstorage import RpmStorage
-from rpmretriever import RpmRetriever
+from .provider import Provider
+from .rpmstorage import RpmStorage
+from .rpmretriever import RpmRetriever
 from shutil import move
 
 class RpmProvider(Provider):

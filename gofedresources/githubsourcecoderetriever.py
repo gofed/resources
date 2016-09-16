@@ -1,4 +1,4 @@
-from retriever import Retriever
+from .retriever import Retriever
 from gofed_lib.urlbuilder.builder import UrlBuilder
 
 class GithubSourceCodeRetriever(Retriever):

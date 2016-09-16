@@ -1,14 +1,14 @@
-from directorystorage import DirectoryStorage
-from filestorage import FileStorage
-from specfilestorage import SpecfileStorage
-from tarballstorage import TarballStorage
-from githubsourcecodestorage import GithubSourceCodeStorage
-from bitbucketsourcecodestorage import BitbucketSourceCodeStorage
-from rpmstorage import RpmStorage
-from kojibuildstorage import KojiBuildStorage
-from gitrepositorystorage import GitRepositoryStorage
-from mercurialrepositorystorage import MercurialRepositoryStorage
-from userdirectorystorage import UserDirectoryStorage
+from .directorystorage import DirectoryStorage
+from .filestorage import FileStorage
+from .specfilestorage import SpecfileStorage
+from .tarballstorage import TarballStorage
+from .githubsourcecodestorage import GithubSourceCodeStorage
+from .bitbucketsourcecodestorage import BitbucketSourceCodeStorage
+from .rpmstorage import RpmStorage
+from .kojibuildstorage import KojiBuildStorage
+from .gitrepositorystorage import GitRepositoryStorage
+from .mercurialrepositorystorage import MercurialRepositoryStorage
+from .userdirectorystorage import UserDirectoryStorage
 
 class StorageBuilder(object):
 

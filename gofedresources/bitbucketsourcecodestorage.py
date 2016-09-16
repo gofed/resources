@@ -1,4 +1,4 @@
-from storage import Storage
+from .storage import Storage
 from gofed_lib.urlbuilder.builder import UrlBuilder
 
 class BitbucketSourceCodeStorage(Storage):

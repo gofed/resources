@@ -1,7 +1,7 @@
 import logging
 logger = logging.getLogger("source_code_provider")
 
-from provider import Provider
+from .provider import Provider
 from .exceptions import ResourceInvalidStorageError, ResourceInvalidRetrieverError, ResourceUnableToRetrieveError
 from shutil import move
 

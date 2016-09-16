@@ -1,10 +1,10 @@
 import logging
 logger = logging.getLogger("bitbucket_source_code_provider")
 
-from sourcecodeprovider import SourceCodeProvider
+from .sourcecodeprovider import SourceCodeProvider
 from .exceptions import ResourceInvalidStorageError, ResourceInvalidRetrieverError, ResourceUnableToRetrieveError
-from bitbucketsourcecodestorage import BitbucketSourceCodeStorage
-from bitbucketsourcecoderetriever import BitbucketSourceCodeRetriever
+from .bitbucketsourcecodestorage import BitbucketSourceCodeStorage
+from .bitbucketsourcecoderetriever import BitbucketSourceCodeRetriever
 
 class BitbucketSourceCodeProvider(SourceCodeProvider):
 

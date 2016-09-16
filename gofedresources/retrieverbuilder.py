@@ -1,8 +1,8 @@
-from gitrepositoryretriever import GitRepositoryRetriever
-from mercurialrepositoryretriever import MercurialRepositoryRetriever
-from githubsourcecoderetriever import GithubSourceCodeRetriever
-from bitbucketsourcecoderetriever import BitbucketSourceCodeRetriever
-from rpmretriever import RpmRetriever
+from .gitrepositoryretriever import GitRepositoryRetriever
+from .mercurialrepositoryretriever import MercurialRepositoryRetriever
+from .githubsourcecoderetriever import GithubSourceCodeRetriever
+from .bitbucketsourcecoderetriever import BitbucketSourceCodeRetriever
+from .rpmretriever import RpmRetriever
 
 class RetrieverBuilder(object):
 

@@ -1,4 +1,4 @@
-from retriever import Retriever
+from .retriever import Retriever
 
 class RpmRetriever(Retriever):
 
