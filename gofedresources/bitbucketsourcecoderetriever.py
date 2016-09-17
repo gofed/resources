@@ -1,5 +1,5 @@
 from .retriever import Retriever
-from gofed_lib.urlbuilder.builder import UrlBuilder
+from gofedlib.urlbuilder.builder import UrlBuilder
 
 class BitbucketSourceCodeRetriever(Retriever):
 

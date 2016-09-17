@@ -1,5 +1,5 @@
 from .storage import Storage
-from gofed_lib.urlbuilder.builder import UrlBuilder
+from gofedlib.urlbuilder.builder import UrlBuilder
 
 class GithubSourceCodeStorage(Storage):
 
