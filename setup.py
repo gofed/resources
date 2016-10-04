@@ -14,5 +14,6 @@ setup(
     url='https://github.com/gofed/resources',
     license='GPL',
     packages=['gofedresources', 'gofedresources.config'],
-    install_requires=open('requirements.txt').read().splitlines()
+    install_requires=open('requirements.txt').read().splitlines(),
+    include_package_data=True
 )
